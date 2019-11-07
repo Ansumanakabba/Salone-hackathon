@@ -1,27 +1,21 @@
-var MyData = [
-    {
-        "key": "value",
-        "ab": "hi there",
-        "we": "say what"
-    }
-];
-function dynamicSort(property) {
-    var sortOrder = 1;
+let Data = [ {"key": "value", "ab": "hi there", "we": "say what"} ];
+function mysort(items) {
+    let sortOrder = 1;
 
-    if(property[0] === "-") {
+    if(items[0] === "-") {
         sortOrder = -1;
-        property = property.substr(1);
+        items = items.substr(1);
     }
 
     return function (a,b) {
         if(sortOrder == -1){
-            return b[property].localeCompare(a[property]);
+            return b[items].localeCompare(a[items]);
         }else{
-            return a[property].localeCompare(b[property]);
+            return a[items].localeCompare(b[items]);
         }
     }
 }
 
-MyData.sort(dynamicSort("key"));
+Data.sort(mysort("key"));
 
-console.log(MyData);
+console.log(Data);
