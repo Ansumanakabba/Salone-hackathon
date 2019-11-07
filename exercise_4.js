@@ -1,16 +1,16 @@
-var fs = require('fs');
+const fs = require('fs');
 
-function get_line(filename, line_no, callback) {
-    var data = fs.readFileSync(filename, 'utf8');
-    var lines = data.split("\n");
+function getLine(name, line, callback) {
+   const data = fs.readFileSync(name, 'utf8');
+   const lines = data.split("\n");
 
-    if(+line_no > lines.length){
+    if(+line > lines.length){
         throw new Error('File end reached without finding line');
     }
 
-    callback(null, lines[+line_no]);
+    callback(null, lines[+line]);
 }
 
-get_line('./helloworld.txt', 9, function(err, line){
+getLine('./helloworld.txt', 9, function(err, line){
     console.log('The line: ' + line);
 });
